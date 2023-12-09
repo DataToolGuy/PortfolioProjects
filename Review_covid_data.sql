@@ -1,9 +1,7 @@
 use covid
 go
 
-/*
-****** Other ideas for my profile at the bottom *****
-
+/* quick sanity checks of data
 select top 100 * from dbo.Deaths
 where date > '11/1/2023'
 
@@ -205,19 +203,19 @@ from popvax
 /*
   Which is faster? in this instance, with > 300 k rows the temporary table was faster
 
-  we could use either a variable, @popvax, or create a temporary table, #popvax. 
+  we could use either a table variable, @popvax, or create a temporary table, #popvax. 
   Unlike the table variable which only exists in the currently 
   executing code block, temporary tables are dropped if
   1. explicitly dropped
-  2. the excution completes a stored procedure that invokes it
+  2. the execution completes a stored procedure that create the temporary table
   3. exits the procedure ???
-  The other differences are indexs and when primary keys can be added
+  Other differences are when and how indexs and primary keys are added
   to the two types of tables. Like regular tables primary keys and indexes 
-  can be added before or after the table is populated. Table variables 
-  it is before.
+  can be added before or after a temporary table is populated. Table variables 
+  keys are added before it is created.
 
-  As of 2018 temporary tables typically preform better when over 
-  15,000 rows. I have >300 k rows.
+  As of 2018 temporary tables typically preformed better when over 15 k rows.
+  In 2023 using SQL Server 2022 on an inexpensive laptop and having >300 k rows.
   Though not appicable in this code, if many inserts and 
   deletes need to be done temporary tables do better.
   Temporary tables can also be truncated but table variables cannot.
