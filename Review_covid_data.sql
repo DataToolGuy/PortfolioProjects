@@ -116,12 +116,12 @@ select top 1000 d.location, v.location, d.date, v.date
    - Not sure what "total vaccinations" represents.
    - Notice for Canada (iso_code 'CAN') the first none-null 
    total value on 12-14-2020 comes with no new_vaccinations. 
-   - I'm guessing maybe these 5 people were vaccinated outside Cacnada?
+   - I'm guessing maybe these 5 people were vaccinated outside Canada?
      in the USA or Germany?
      Another possibility is that it is simply an error, though I would
-     guess that is unlikely.
+     guess that is unlikely ecause covid was so high profile..
    - Albania has the same thing going on so I am unsure what is 
-     going on.
+     going on, with total vaccinations starting before new vaccinations.
  */
 select top 1000 d.continent, d.location, d.iso_code, d.date, 
        d.population, v.new_vaccinations,
@@ -149,7 +149,8 @@ order by d.iso_code, d.date;
 --   Why is the running sum different than the total_vaccinations? 
 --     Example: for Albania on January 12, 2021, the total_vaccinations is 128, but no new
 --              vaccinations have yet been entered.
---              and similar for Canada at 12-14-2020
+--              and similar for Canada at 12-14-2020, similar thoughts above 
+--              at line 121.
 --
 --     Status: Looking online I don't see anything.
 --         I supect it has something to do with consecutive days but not counting new
@@ -158,7 +159,7 @@ order by d.iso_code, d.date;
 --         It might be syncing the numbers was not a priority and discrepencies were 
 --         considered minor.
 --   
---   uses window function
+--  caculate running total (aka: running sum,  use window function
 select top 200 d.continent, d.location, d.iso_code, d.date, 
        d.population, v.new_vaccinations,
        v.total_vaccinations, 
@@ -168,7 +169,6 @@ select top 200 d.continent, d.location, d.iso_code, d.date,
   from covid..Deaths d
     join covid..vax v
       on d.iso_code = v.iso_code
-     and d.date = v.date 
 where d.continent is not null
   and d.iso_code = 'ALB' and d.date >= '2021-01-05'
 order by d.location, d.date;
