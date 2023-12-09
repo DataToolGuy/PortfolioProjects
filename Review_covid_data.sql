@@ -201,15 +201,17 @@ from popvax
 ;
 
 /*
-  Which is faster? in this instance, with > 300 k rows the temporary table was faster
+  Which is faster? a temporary table or table variable?  
+  In this instance, with > 300 k rows the temporary table was faster
 
-  we could use either a table variable, @popvax, or create a temporary table, #popvax. 
+  Note: we also could use a common table expresion like we did above or a derived tabe not shown.
+  Or we could use either a table variable, @popvax, or create a temporary table, #popvax. 
   Unlike the table variable which only exists in the currently 
   executing code block, temporary tables are dropped if
   1. explicitly dropped
   2. the execution completes a stored procedure that create the temporary table
   3. exits the procedure ???
-  Other differences are when and how indexs and primary keys are added
+  Other differences are when and how indexes and primary keys are added
   to the two types of tables. Like regular tables primary keys and indexes 
   can be added before or after a temporary table is populated. Table variables 
   keys are added before it is created.
