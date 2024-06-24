@@ -3,9 +3,8 @@ I build tools that help folks understand data.
 
 To build those data tools I use:
 - SQL: (Especially Microsoft's SQL Server's variety, TSQL. I've worked with MySQL's version of SQL, and Microsoft Accesses versions of SQL as well.
-- Python: Currently I'm currently learning Python.
-  Python's power to build tools that manipulate data and build graphs is impressive.
-I have also worked with VBA especially in Access and also some in Excel.
+- Python: is my go to as I learn it. Having started ages ago in C, and used C++, VB, VBA and played around with others, I find Python's power to build tools that manipulate data and build graphs from it's various modules, is impressive.
+I recently worked with VBA especially in Access and also some in Excel.
 I have worked with with other languages including VB and the Web languages: JavaScript, HTML 5, CSS.
 - And the desktop office tools for
   - spreadsheets: Excel (and Libre Office's Calc and Googles Sheet, which have some similar features).
