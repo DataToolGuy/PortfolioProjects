@@ -204,10 +204,10 @@ from popvax
   Which is faster? a temporary table or table variable?  
   In this instance, with > 300 k rows the temporary table was faster
 
-  Note: we also could use a common table expresion like we did above or a derived tabe not shown.
+  Note: we also could use a common table expresion like we did above or a derived table (not shown).
   Or we could use either a table variable, @popvax, or create a temporary table, #popvax. 
   Unlike the table variable which only exists in the currently 
-  executing code block, temporary tables are dropped if
+  executing code block, temporary tables are dropped if they are
   1. explicitly dropped
   2. the execution completes a stored procedure that create the temporary table
   3. exits the procedure ???
@@ -219,7 +219,7 @@ from popvax
   As of 2018 temporary tables typically preformed better when over 15 k rows.
   In 2023 using SQL Server 2022 on an inexpensive laptop and having >300 k rows.
   Though not appicable in this code, if many inserts and 
-  deletes need to be done temporary tables do better.
+  deletes need to be done, then temporary tables do better.
   Temporary tables can also be truncated but table variables cannot.
   
   The query optimizer doesn't have the benifit of the data before the 
@@ -227,7 +227,7 @@ from popvax
 
   Here I am just dumping the data to the screen.
 
-  times 2 sec to populate and select the top 1000
+  times: 2 sec to populate and select the top 1000
  */
 use covid
 go
